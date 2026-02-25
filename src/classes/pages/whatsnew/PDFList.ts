@@ -9,6 +9,8 @@ import {
 
 export class PDFList extends Div {
 
+    private input: Block;
+
     private buttons: SpinnerButton[] = [];
 
     constructor(parent: Block) {
@@ -26,6 +28,12 @@ export class PDFList extends Div {
 
         const response = await fetch('/assets/json/whatsnew-files.json');
         const list = await response.json();
+
+        this.input = new Block('input', {
+            placeholder: "Search versions..."
+        }, this);
+
+        this.input.onNative('input', this.onInput.bind(this));
 
         for (const name of list) {
 
@@ -76,5 +84,17 @@ export class PDFList extends Div {
 
         for (const button of this.buttons)
             button.unload();
+    }
+
+    /*
+    **
+    **
+    */
+    private onInput() : void {
+
+        const value = this.input.element.value.trim().toLowerCase();
+
+        for (const button of this.buttons)
+            button.setData('search-match', button.publicData.name.toLowerCase().includes(value) ? 1 : 0);
     }
 }
