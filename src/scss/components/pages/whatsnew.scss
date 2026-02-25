@@ -41,6 +41,17 @@
         margin: 8px;
         margin-right: 0;
 
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(50px);
+        transition: all 500ms;
+
+        &[data-displayed="1"] {
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+        }
+
         overflow: hidden !important;
         overflow-y: scroll !important;
         scrollbar-width: none !important;
@@ -81,15 +92,19 @@
             left: 8px;
             width: calc(100% - 16px);
             height: calc(100% - 16px);
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            box-sizing: border-box;
+            border-radius: 8px;
+
             opacity: 0;
             visibility: hidden;
+            transform: translateX(-50px);
             transition: all 500ms;
-            border: 1px solid rgba(0, 0, 0, 0.15);
-            border-radius: 8px;
 
             &[data-ready="1"] {
                 opacity: 1;
                 visibility: visible;
+                transform: none;
             }
         }
     }

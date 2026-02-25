@@ -10,7 +10,7 @@ import * as nodePath from 'path';
 import * as recast from 'recast';
 import * as esbuild from 'esbuild';
 
-import JavaScriptObfuscator from '../lib/javascript-obfuscator-530.cjs';
+import JavaScriptObfuscator from '../lib/javascript-obfuscator.cjs';//'../lib/javascript-obfuscator-530.cjs';
 import Terser from '../lib/terser.cjs';
 import sass from '../lib/sass.cjs';
 import minimizeHTML from '../lib/minimize-html.cjs';
@@ -414,7 +414,7 @@ export class Build {
             deadCodeInjection: false,
             deadCodeInjectionThreshold: 0.2,
             debugProtection: false,
-            debugProtectionInterval: 0,
+            //debugProtectionInterval: 0,
             disableConsoleOutput: true,
             domainLock: [],
             identifierNamesGenerator: 'mangled',

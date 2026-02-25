@@ -23,5 +23,9 @@ export class WhatsnewPage extends Page {
         this.list.on('url', (url: string) => {
             this.view.render(url);
         });
+
+        this.view.on('loaded', () => {
+            this.list.unloadAll();
+        });
     }
 }

@@ -3,7 +3,8 @@
 import {
     Block,
     Div,
-    SpinnerButton
+    SpinnerButton,
+    Tools
 } from '@src/classes';
 
 export class PDFList extends Div {
@@ -36,23 +37,44 @@ export class PDFList extends Div {
             button.setText(name.replaceAll('_', ' ').replaceAll('.pdf', ''));
 
             button.onNative('click', () => {
-                
-                this.select(name);
-
-                this.emit('url', `/assets/whatsnew-files/${name}`);
+                this.select(button);
             });
 
             this.buttons.push(button);
         }
+
+        await Tools.sleep(10);
+        this.setData('displayed', 1);
     }
 
     /*
     **
     **
     */
-    private select(name: string) : void {
+    private select(button_: SpinnerButton) : void {
+
+        for (const button of this.buttons) {
+            
+            if (button.publicData.name === button_.publicData.name) {
+                button.setData('selected', 1);
+                button.load();
+            }
+
+            else {
+                button.setData('selected', 0);
+            }
+        }
+
+        this.emit('url', `/assets/whatsnew-files/${button_.publicData.name}`);
+    }
+
+    /*
+    **
+    **
+    */
+    public unloadAll() : void {
 
         for (const button of this.buttons)
-            button.setData('selected', button.publicData.name === name ? 1 : 0);
+            button.unload();
     }
 }

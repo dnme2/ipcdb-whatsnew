@@ -2,7 +2,8 @@
 
 import {
     Block,
-    Div
+    Div,
+    Tools
 } from '@src/classes';
 
 export class PDFView extends Div {
@@ -39,8 +40,10 @@ export class PDFView extends Div {
         
         await new Promise<void>((resolve, reject) => {
 
-            const onLoad = () => {
+            const onLoad = async () => {
                 this.iframeCleanup();
+                await Tools.sleep(250);
+                this.emit('loaded');
                 iframe.setData('ready', 1);
                 resolve();
             };

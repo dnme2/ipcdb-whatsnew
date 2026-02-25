@@ -8685,3 +8685,7 @@ dialog :link{
     display:none;
   }
 }
+
+#scaleSelectContainer {
+  display: none !important;
+}
