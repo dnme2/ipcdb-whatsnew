@@ -1,0 +1,34 @@
+button {
+
+    position: relative !important;
+    overflow: hidden !important;
+    letter-spacing: 0.01em !important;
+    -webkit-font-smoothing: antialiased !important;
+    text-rendering: geometricPrecision !important;
+    -webkit-font-smoothing: antialiased !important;
+    font-optical-sizing: auto !important;
+    transition: all 300ms ease !important;
+    
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0px;
+        background: rgba(0, 0, 0, 0.08);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 300ms ease !important;
+    }
+
+    &[data-pressed="1"] {
+
+        transform: scale(0.98) !important;
+
+        &::before {
+            opacity: 1 !important;
+        }
+    }
+
+    &[data-pressed="-1"]::before {
+        opacity: 0 !important;
+    }
+}

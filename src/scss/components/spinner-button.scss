@@ -1,0 +1,81 @@
+@use "sass:color";
+
+button.spinner-button {
+
+    all: unset;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background: #fff;
+    cursor: pointer;
+
+    > .label {
+
+        padding: 15px 25px;
+        transition: opacity 250ms;
+        text-align: center;
+
+        > * {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        &[data-has-icon-and-text="1"] > .icon {
+            margin-right: 9px;
+        }
+
+        > .icon {
+
+            font-family: 'Material Symbols Rounded' !important;
+            font-size: 24px;
+            font-variation-settings:
+                'FILL' 1,
+                'wght' 400,
+                'GRAD' 25,
+                'opsz' 24 !important;
+
+            display: inline-block;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            white-space: nowrap;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            color: #000;
+            opacity: 0.8;
+        }
+
+        > .text {
+            font-family: "Google Sans";
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 24px;
+            color: #000;
+            opacity: 0.9;
+        }
+    }
+
+    &[data-loading="1"] {
+
+        pointer-events: none;
+    
+        > .label {
+            opacity: 0;
+        }
+
+        > .spinner {
+            opacity: 1;
+        }
+    }
+
+    &[data-enabled="0"] {
+        opacity: 0.2;
+        pointer-events: none;
+        cursor: default;
+    }
+}

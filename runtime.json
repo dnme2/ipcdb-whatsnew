@@ -1,0 +1,15 @@
+{
+    "runtimeName": "ipcdb-whatsnew",
+    "appName": "IPCDB Whatsnew",
+    "themeColor": "#fff",
+    "robotsOnProd": false,
+    "domain": "",
+    "og:type": "",
+    "twitter:site": "",
+    "extraHead": "",
+    "devPort": 1031,
+    "vendorDependencies": [],
+    "pages": [
+        { "path": "/", "title": "", "description": "" }
+    ]
+}

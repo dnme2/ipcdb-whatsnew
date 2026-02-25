@@ -1,0 +1,51 @@
+.spinner {
+
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    border-radius: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 250ms;
+
+    > svg {
+
+        fill: #000;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 18px;
+        height: 18px;
+        transform: translate(-50%, -50%);
+        animation: spinner-rotate 1.2s linear infinite;
+
+        > circle {
+            fill: none;
+            stroke: #000;
+            stroke-width: 5;
+            stroke-linecap: round;
+            stroke-dasharray: 1 100;
+            stroke-dashoffset: 0;
+            animation: spinner-dash 1.8s ease-in-out infinite;
+        }
+    }
+
+    @keyframes spinner-rotate {
+        to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @keyframes spinner-dash{
+        0%   { stroke-dasharray: 1 100;  stroke-dashoffset: 0; }
+        50%  { stroke-dasharray: 65 100; stroke-dashoffset: -25; }
+        100% { stroke-dasharray: 1 100;  stroke-dashoffset: -100; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        > .spinner > svg,
+        > .spinner > svg > circle {
+            animation: none;
+        }
+    }
+}

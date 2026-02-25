@@ -1,0 +1,108 @@
+/* +=============================+ */
+/* |        LAUNCH SCREEN        | */
+/* +=============================+ */
+
+html, body {
+    background: #fff;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+#app {
+
+    > .launch-screen {
+
+        position: fixed;
+        z-index: 12345;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        transition: all 0.4s;
+        background: #fff;
+
+        .container,
+        .loader-container {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            width: 45px;
+            height: 45px;
+        }
+
+        .launch-screen-loader-container {
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            width: 100%;
+            height: 100%;
+        }
+
+        .loader {
+
+            position: absolute;
+            z-index: 999;
+            transform: translate(-50%, -50%) !important;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+
+            .circle {
+
+                animation: rotate 1s linear infinite;
+                transform-origin: center center;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+
+                circle {
+                    stroke: #000;
+                    stroke-linecap: round;
+                    stroke-dasharray: 89, 200;
+                    stroke-dashoffset: -10px;
+                }
+            }
+
+            .circle2 {
+                animation: rotate2 1s linear infinite;
+                transform-origin: center center;
+                position: absolute;
+                top: 20%;
+                left: 20%;
+                width: 60%;
+                height: 60%;
+            }
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotate2 {
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+    }
+
+    &[data-ready="1"] > .launch-screen,
+    &[data-ready="2"] > .launch-screen {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &[data-ready="2"] > .launch-screen * {
+        animation-play-state: paused;
+    }
+}

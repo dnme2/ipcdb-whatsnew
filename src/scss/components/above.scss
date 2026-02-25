@@ -1,0 +1,40 @@
+.above {
+
+    > .close-zone {
+        position: absolute;
+        z-index: 99991;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.08);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 250ms, pointer-events 0s linear 250ms;
+    }
+
+    > .content {
+        position: absolute;
+        z-index: 99992;
+        border-radius: 8px;
+        width: max-content;
+        height: max-content;
+        box-shadow: 4px 8px 20px 0 rgb(0 0 0 / 15%);
+        opacity: 0;
+        transform: translateY(15px);
+        transition: opacity 250ms, transform 250ms;
+    }
+
+    &[data-displayed="1"] {
+
+        > .close-zone {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        > .content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

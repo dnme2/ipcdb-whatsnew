@@ -1,0 +1,96 @@
+.page.whatsnew {
+
+    position: relative;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background: #e7e7e7;
+
+    &::before {
+
+        content: "";
+        width: 40%;
+        aspect-ratio: 1 / 1;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+
+        background-image: svg('/assets/svg/whatsnew.svg');
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.03;
+    }
+    
+    > .pdf-list {
+
+        z-index: 10;
+        height: calc(100% - 16px);
+        width: max-content;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        padding-bottom: 0;
+        box-sizing: border-box;
+        overflow: scroll;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
+        margin: 8px;
+        margin-right: 0;
+
+        overflow: hidden !important;
+        overflow-y: scroll !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        
+        &::-webkit-scrollbar {
+            display: none !important;
+        }
+
+        > button {
+
+            display: block;
+            flex: 0 0 auto;
+            height: max-content;
+            margin-bottom: 10px;
+
+            > .label {
+                text-align: left;
+            }
+
+            &[data-selected="1"] {
+                background: #e4e4e4;
+            }
+        }
+    }
+
+    > .pdf-view {
+
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+
+        iframe {
+        
+            border: none;
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: calc(100% - 16px);
+            height: calc(100% - 16px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 500ms;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+
+            &[data-ready="1"] {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+}
